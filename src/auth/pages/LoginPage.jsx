@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
-
-const LoginForm = () => {
+import { useDispatch, useSelector } from 'react-redux';
+import {startGoogleSignIn,startLoginWithEmailPassword} from '../../store/auth';
+import { Link as RouterLink } from 'react-router-dom';
+export const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('Login with:', email, password);
     dispatch( startLoginWithEmailPassword({ email, password }) );
     // Aquí agregarías la lógica para manejar el inicio de sesión
   };
+
+  const onGoogleSignIn = () => {
+    console.log('onGoogleSignIn');
+    dispatch( startGoogleSignIn() );
+  }
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
@@ -55,10 +63,25 @@ const LoginForm = () => {
               Sign in
             </button>
           </div>
+          <div>
+            <button
+              type="button"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+              onClick={onGoogleSignIn}
+            >
+              Sign in with Google
+            </button>
+          </div>
+     
         </form>
+        <div className="flex justify-end">
+          <RouterLink to="register" className="text-blue-700 hover:text-blue-900">
+            Crear una cuenta
+          </RouterLink>
+        </div>
       </div>
     </div>
   );
 }
 
-export default LoginForm;
+ 

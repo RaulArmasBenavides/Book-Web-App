@@ -1,11 +1,11 @@
-import react, { useState } from 'react'
+import  { useState } from 'react'
 import BookList from '../components/BookList';
 import Input from '../components/Input';
 import Navbar from '../components/Navbar';
 import UseFetch from '../../hooks/UseFetch';
 import { Circles } from 'react-loader-spinner';
 
-const Home = () => {
+export const Home = () => {
 	const [term, setTerm] = useState('Anything');
 	const {data:books,isLoading,error}=UseFetch(`https://www.googleapis.com/books/v1/volumes?q=${term}&key=${import.meta.env.VITE_SOME_VALUE}`)
 	
@@ -56,4 +56,4 @@ const Home = () => {
 	);
 }
 
-export default Home;
+ 
