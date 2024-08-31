@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 const BookList = ({ books }) => {
-	
+ 
+	if (!books || !Array.isArray(books) || books.length === 0) {
+		return <p>No books available.</p>;
+	}
+
 	return (
 		<div className='book-list'>
 			{books.map((book) => (
@@ -44,4 +47,4 @@ const BookList = ({ books }) => {
 	);
 }
 
-export default BookList
+export default BookList;

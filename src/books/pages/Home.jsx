@@ -1,23 +1,19 @@
 import  { useState } from 'react'
 import BookList from '../components/BookList';
 import Input from '../components/Input';
-import Navbar from '../components/Navbar';
 import UseFetch from '../../hooks/UseFetch';
 import { Circles } from 'react-loader-spinner';
 
 export const Home = () => {
 	const [term, setTerm] = useState('Anything');
-	const {data:books,isLoading,error}=UseFetch(`https://www.googleapis.com/books/v1/volumes?q=${term}&key=${import.meta.env.VITE_SOME_VALUE}`)
-	
+	const {data:books,isLoading,error}=UseFetch(`https://www.googleapis.com/books/v1/volumes?q=${term}`)
 
 	return (
 		<div>
-			<>
-				<Navbar />
+			<> 
 				<div className='header'>
 					<div className='overlay'>
 						<h2 className='Heading-text'>Books on {term}</h2>
-
 						<p className='text-md mb-4 px-2 lg:px-0'>
 							“Reading is an act of civilization; it’s one of the greatest acts
 							of civilization because it takes the free raw material of the mind
@@ -55,5 +51,3 @@ export const Home = () => {
 		</div>
 	);
 }
-
- 

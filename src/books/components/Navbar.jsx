@@ -1,13 +1,13 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { startLogout } from '../../store/auth';
+// import { startLogout } from '../../store/auth';
 
 const Navbar = () => {
 
 	const dispatch = useDispatch();
 
     const onLogout = () => {
-        dispatch( startLogout() );
+        // dispatch( startLogout() );
     }
     return (
 		<div>

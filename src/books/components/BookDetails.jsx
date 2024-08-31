@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import Navbar from './Navbar';
 
-
-const BookDetails = () => {
+export const BookDetails = () => {
     const [books, setBooks] = useState([]);
 	const { id } = useParams()
-
+ 
     useEffect(() => {
         fetch(`https://www.googleapis.com/books/v1/volumes?q=${id}&key=${import.meta.env.VITE_SOME_VALUE}`)
             .then((res) => {
@@ -19,13 +17,12 @@ const BookDetails = () => {
     },[])
     return (
 			<>
-				<Navbar />
 				<div className='bookdetail'>
 					{books.map((book) => (
 						<div key={book.id} className='bookdetail-container'>
 							<div>
 								<img
-									src={book.volumeInfo.imageLinks.smallThumbnail}
+									src={book.volumeInfo.imageLinks.smallThumbnail??""}
 									alt={book.volumeInfo.title}
 									style={{ width: '500px', height: '250px', padding: '20px' }}
 								/>
@@ -63,4 +60,4 @@ const BookDetails = () => {
 		);
 }
 
-export default BookDetails
+// export default BookDetails

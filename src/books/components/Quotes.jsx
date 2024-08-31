@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Navbar from './Navbar'
 import { BiRefresh } from 'react-icons/bi';
 import{data} from '../../data'
 
@@ -13,7 +12,6 @@ const Quotes = () => {
 	
 	return (
 		<div>
-			<Navbar />
 			<div className='bg-navbar'>
 				<div className='overlay-2'>
 					<section className='leading-loose max-w-7xl mx-auto'>
